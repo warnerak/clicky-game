@@ -20,14 +20,14 @@ class App extends Component {
         console.log(this.state.highscore);
       });
     }
-    // Reset all card counts to zero and run the alert that you lost the game
+    // Reset all card counts and score to zero and run the alert that you lost the game
     this.state.cards.forEach(card => {
       card.count = 0;
     });
     alert(`Game Over :( \nscore: ${this.state.score}`);
     this.setState({ score: 0 });
     return true;
-  }
+  };
 
   clickCount = id => {
     //loops through the cards to check to see if the card has been clicked
@@ -44,10 +44,13 @@ class App extends Component {
           return true;
         } else {
           this.gameOver();
+          return false
         }
       }
+      return false
     });
   }
+
 
   render() {
     return (
